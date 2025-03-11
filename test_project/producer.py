@@ -1,7 +1,8 @@
 import asyncio
 import inspect
 import logging
-from typing import Callable, Coroutine, Never, Union
+from typing import Callable, Never, Union
+from collections.abc import Coroutine
 
 from celery.canvas import Signature
 
