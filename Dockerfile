@@ -1,4 +1,4 @@
-FROM python:3.12-alpine AS python-base
+FROM python:3.12-slim AS python-base
 
 ENV PYTHONFAULTHANDLER=1 \
     PYTHONHASHSEED=random \
@@ -39,13 +39,13 @@ FROM python-base
 WORKDIR /app
 
 # For health check
-RUN apk --no-cache add curl
+RUN apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV LOG_FILE_PATH=/app/logs/app.log
 RUN mkdir /app/logs
 
 # Avoid running as root
-RUN adduser -D myuser
+RUN useradd -ms /bin/bash myuser
 RUN chown myuser:myuser /app/logs
 USER myuser
 
