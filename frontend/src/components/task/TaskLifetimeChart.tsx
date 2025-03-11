@@ -82,7 +82,7 @@ const getTimestamp = (date: Date) => date.getTime()
 
 const getFinishedAt = (task: StateTask) =>
     task.succeededAt || task.failedAt || task.retriedAt || task.rejectedAt || task.revokedAt
-const getStartedAt = (task: StateTask) => task.startedAt || task.revokedAt || task.rejectedAt
+const getStartedAt = (task: StateTask) => task.startedAt || task.revokedAt || task.rejectedAt || task.receivedAt
 const getReceivedAt = (task: StateTask) => task.receivedAt || task.revokedAt
 
 const getSeries = (task: StateTask, now: Date): ApexAxisChartSeries => [
